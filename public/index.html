@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Smart-Fridge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script src="./js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+  <script src="./js/materialize.min.js" type="text/javascript"></script>
+  <script src="./js/app.js" type="text/javascript"></script>
+  <link href="./css/css.css" rel="stylesheet" type="text/css">
+  <link href="./css/materialize.css" rel="stylesheet" type="text/css" media="screen,projection"/>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body ng-app="dragApp" ng-controller="dragCtrl" ng-init="init()">
+    <center>
+    <div class="container">
+      <div class="row">
+        <br>
+        <span class="flow-text white-text"><center>Click & Drag labels onto food items.</center></span>
+      </div>
+      <div class="row">
+          <div class="center-align col s1 m1 l1">
+            <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(1)">1Day</button>
+          </div>
+          <div style="margin-left:11px;" class="center-align col s1 m1 l1">
+            <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(2)">2Day</button>
+          </div>
+          <div style="margin-left:11px;" class="center-align col s1 m1 l1">
+            <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(3)">3Day</button>
+          </div>
+          <div style="margin-left:11px;" class="center-align col s1 m1 l1">
+            <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(4)">4Day</button>
+          </div>
+          <div style="margin-left:11px;" class="center-align col s1 m1 l1">
+            <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(5)">5Day</button>
+          </div>
+          <div style="margin-left:11px;" class="center-align col s1 m1 l1">
+            <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(6)">6Day</button>
+          </div>
+          <div style="margin-left:11px;" class="center-align col s1 m1 l1">
+            <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(7)">7Day</button>
+          </div>
+          <div style="margin-left:11px;" class="center-align col s1 m1 l1">
+            <button class="btn-floating waves-effect waves-light orange" ng-click="addDragCustom()"><b>+</b></button>
+          </div>
+          <div id="{{item.counts}}" ng-repeat="item in drag" ng-mouseup="dragCir($index)">
+            <p style="width:35px; height:35px;" class="btn-floating orange">{{item.days}}</p>
+            {{init()}}
+          </div>
+      </div>
+    </div>
+    <div class="btn-floating btn-large waves-effect waves-light amber darken-3" ng-click="click()"><i class="material-icons">videocam</i></div>
+    <img class="responsive-img" src="Front.jpg">
+
+ <!-- Modal Structure -->
+ <div id="modal1" class="modal" style="height:900px">
+   <div class="modal-content">
+     <h4>Choose Days</h4>
+     <input type="date" class="datepicker" ng-model="datePicker">
+   </div>
+   <div class="modal-footer">
+     <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="customDay(datePicker)">OK</button>
+   </div>
+ </div>
+
+ <!-- Script Modal -->
+ <script>
+ $(document).ready(function(){
+   $('.modal-trigger').leanModal();
+     });
+ $('.datepicker').pickadate({
+       selectMonths: true, // Creates a dropdown to control month
+       selectYears: 15 // Creates a dropdown of 15 years to control year
+     });
+ </script>
+</center>
+</body>
+</html>
