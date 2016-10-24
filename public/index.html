@@ -55,7 +55,7 @@
     <div class="btn-floating btn-large waves-effect waves-light amber darken-3" ng-click="click()"><i class="material-icons">videocam</i></div>
     <h1 ng-hide="!flipStatus">Back</h1>
     <button ng-click="flip()">FLIP</button>
-    <img class="responsive-img" src="Front.jpg">
+    <img ng-hide="flipStatus" class="responsive-img" src="Front.jpg">
 
  <!-- Modal Structure -->
  <div id="modal1" class="modal" style="height:900px">
