@@ -1,4 +1,4 @@
-/*global $, angular*/
+/* global $, angular */
 angular.module('dragApp', [])
 .controller('dragCtrl', function ($scope, $http) {
   $scope.drag = []
@@ -31,20 +31,16 @@ angular.module('dragApp', [])
   //  move from remask controller
   $scope.flipStatus = false
   $scope.click = function () {
-    if ($scope.value === 'snap') {
-      console.log('Snapshot!')
-      $http.get('/click').success(function (response) {
-        $scope.data = response
-        console.log(response)
-        setTimeout(function () {
-          window.location = 'index.html'
-        }, 1500)
-      }).error(function (data, status, headers, config) {
-        console.log('error')
-      })
-    } else {
-      console.log('Not Snap')
-    }
+    console.log('Snapshot!')
+    $http.get('/click').success(function (response) {
+      $scope.data = response
+      console.log(response)
+      setTimeout(function () {
+        window.location = 'index.html'
+      }, 1500)
+    }).error(function (data, status, headers, config) {
+      console.log('error')
+    })
   }
   $scope.flip = function () {
     if ($scope.flipStatus === false) {
