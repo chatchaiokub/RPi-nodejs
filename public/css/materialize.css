@@ -4072,6 +4072,13 @@ input[type=range] + .thumb {
     left: auto;
     right: auto;
   }
+  .toast {
+    float: left;
+    margin-bottom: 30%;
+    margin-left: 35%;
+    width: 10%;
+    height: auto;
+  }
 }
 @media only screen and (min-width: 415px) {     /* iPhone 6 Plus,6s Plus (414px) */
   .row .col.s1 {
@@ -4090,7 +4097,7 @@ input[type=range] + .thumb {
   }
 }
 @media only screen and (min-width: 769px) {     /* All iPad (768px) */
-  .row .col.s1 {
+  .row .col.m1 {
     width: 11%;
     margin-left: auto;
     left: auto;
@@ -4098,7 +4105,7 @@ input[type=range] + .thumb {
   }
 }
 @media only screen and (min-width: 801px) {     /* All Samsung Galaxy Tab (800px) */
-  .row .col.s1 {
+  .row .col.m1 {
     width: 11%;
     margin-left: auto;
     left: auto;
@@ -4813,21 +4820,26 @@ small {
   border-radius: 24px;
 }
 
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
   .toast {
-    width: 100%;
-    border-radius: 0;
+    width: 123px;
+    margin-bottom: 25%;
+    margin-left: 35%;
   }
-}
+}*/
 
-@media only screen and (min-width: 601px) and (max-width: 992px) {
+/*@media only screen and (min-width: 601px) and (max-width: 992px) {
   .toast {
+    width: 123px;
+    margin-bottom: 50%;
+    margin-left: 175%;
     float: left;
   }
-}
+}*/
 
 @media only screen and (min-width: 993px) {
   .toast {
+    width: 100%;
     float: right;
   }
 }

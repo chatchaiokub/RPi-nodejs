@@ -1,7 +1,11 @@
 /*
-  [Drag]
+  [Drag] Materialize
   @media only screen and (min-width: 601px) .row .col.m1  Screen size >= 601px is medium
   @media only screen and (min-width: 993px) .row .col.l1  Screen size >= 993px is large
+  @media only screen and (min-width: 321px) .row .col.s1  iPhone 5,6,6s,7 (320px,360px,375px)
+  @media only screen and (min-width: 415px) .row .col.s1  iPhone 6 Plus,6s Plus (414px)
+  @media only screen and (min-width: 769px) .row .col.m1  All iPad (768px)
+  @media only screen and (min-width: 769px) .row .col.m1  All Samsung Galaxy Tab (800px)
 */
 body{
   background-color: black;
