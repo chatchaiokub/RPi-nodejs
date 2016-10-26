@@ -3884,7 +3884,7 @@ input[type=range] + .thumb {
 
 @media only screen and (min-width: 993px) {
   .row .col.l1 {
-    width: 11.1%;
+    width: 12%;
     margin-left: auto;
     left: auto;
     right: auto;
@@ -4064,8 +4064,8 @@ input[type=range] + .thumb {
     left: 100%;
   }
 }
-/*--------------------------------------------- More Device --------------------------------------------------*/
-@media only screen and (min-width: 319px) {
+/*--------------------------------------------- More Device ---------------------------------------------------------*/
+@media only screen and (min-width: 319px) {     /* Toast Alert for iPhone5 Only */
   .toast {
     float: left;
     margin-bottom: 33%;
@@ -4073,9 +4073,8 @@ input[type=range] + .thumb {
     width: 10%;
     height: auto;
   }
-  /* Alert for iPhone5 Only*/
 }
-@media only screen and (min-width: 321px) {     /* iPhone 5,6,6s,7 (320px,360px,375px) */
+@media only screen and (min-width: 321px) {     /*-------------- iPhone 5,6,6s,7 (320px,360px,375px) -----------------*/
   .row .col.s1 {
     width: 9%;
     margin-left: auto;
@@ -4090,14 +4089,14 @@ input[type=range] + .thumb {
     height: auto;
   }
 }
-@media only screen and (min-width: 415px) {     /* iPhone 6 Plus,6s Plus (414px) */
+@media only screen and (min-width: 415px) {     /*------------------- iPhone 6 Plus,6s Plus (414px) -----------------*/
   .row .col.s1 {
     width: 9.3%;
     margin-left: auto;
     left: auto;
     right: auto;
   }
-  button.btn-floating{
+  button.btn-floating {    /* PowerUp size [Parent Drag] When iPhone 6 Plus,6s Plus */
     color:#fff;
     width: 45px;
     height: 45px;
@@ -4105,24 +4104,62 @@ input[type=range] + .thumb {
     padding: 0px;
     border-radius: 50%;
   }
+  .row .Child-drag {     /* PowerUp size [Child Drag] When iPhone 6 Plus,6s Plus */
+    width: 45px;
+    height: 45px;
+    padding-top: 5px;
+  }
 }
-@media only screen and (min-width: 769px) {     /* All iPad (768px) */
+@media only screen and (min-width: 769px) {     /*------------------------ All iPad (768px) -------------------------*/
   .row .col.m1 {
-    width: 11%;
+    width: 10.6%;
     margin-left: auto;
     left: auto;
     right: auto;
   }
+  button.btn-floating {    /* PowerUp size [Parent Drag] When All iPad */
+    color:#fff;
+    width: 75px;
+    height: 75px;
+    line-height: 37px;
+    padding: 0px;
+    border-radius: 50%;
+  }
+  .FONTs1 {
+    font-size: 20px;
+  }
+  .row .Child-drag {     /* PowerUp size [Child Drag] When All iPad */
+    width: 75px;
+    height: 75px;
+    padding-top: 20px;
+  }
 }
-@media only screen and (min-width: 801px) {     /* All Samsung Galaxy Tab (800px) */
+@media only screen and (min-width: 801px) {     /*----------------- All Samsung Galaxy Tab (800px) --------------------*/
   .row .col.m1 {
-    width: 11%;
+    width: 10.7%;
     margin-left: auto;
     left: auto;
     right: auto;
   }
+  button.btn-floating {    /* PowerUp size [Parent Drag] When All Samsung Galaxy Tab */
+    color:#fff;
+    width: 80px;
+    height: 80px;
+    line-height: 37px;
+    padding: 0px;
+    border-radius: 50%;
+  }
+  .FONTs1 {
+    font-size: 20px;
+  }
+  .row .Child-drag {     /* PowerUp size [Child Drag] When All Samsung Galaxy Tab */
+    width: 80px;
+    height: 80px;
+    padding-top: 25px;
+  }
 }
-/*--------------------------------------------- More Device --------------------------------------------------*/
+/*--------------------------------------------- More Device ------------------------------------------------------------*/
+
 nav {
   color: #fff;
   background-color: #ee6e73;
@@ -4374,6 +4411,12 @@ html {
   html {
     font-size: 15px;
   }
+    .row .col.s1 {
+      width: 11.5%;
+      margin-left: auto;
+      left: auto;
+      right: auto;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {

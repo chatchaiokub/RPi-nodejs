@@ -23,7 +23,7 @@
         <br>
         <span class="flow-text white-text"><center>Click & Drag labels onto food items.</center></span>
       </div>
-      <div class="row">
+      <div class="row FONTs1">
         <div class="center-align col s1 m1 l1">
           <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(1)">1Day</button>
         </div>
@@ -49,7 +49,7 @@
           <button class="btn-floating waves-effect waves-light orange" ng-click="addDragCustom()"><b>+</b></button>
         </div>
         <div id="{{item.counts}}" ng-repeat="item in drag" ng-mouseup="dragCir($index)">
-          <p style="width:35px; height:35px;" class="btn-floating orange">{{item.days}}</p>
+          <p class="btn-floating orange Child-drag">{{item.days}}</p>
           {{init()}}
         </div>
       </div>
@@ -57,14 +57,8 @@
   </center>
 
   <!-- Back Front IMG! -->
-<<<<<<< HEAD
-  <img ng-hide="flipStatus" class="responsive-img" style="width:100%; height:100%;"src="water.jpg">
+  <img ng-hide="flipStatus" class="responsive-img" style="width:100%;" src="water.jpg">
   <img ng-hide="!flipStatus" class="responsive-img" src="Back.jpg">
-=======
-  <img ng-hide="flipStatus" class="responsive-img" style="height:350px;" src="Front.jpg">
-  <img ng-hide="!flipStatus" class="responsive-img" style="height:350px;" src="Back.jpg">
->>>>>>> 36f358b8fc9ece231a96d581bb021a3a4ff8dc8d
-
 
   <!-- Button Snap! -->
   <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
