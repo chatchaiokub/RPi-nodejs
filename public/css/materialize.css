@@ -4065,6 +4065,16 @@ input[type=range] + .thumb {
   }
 }
 /*--------------------------------------------- More Device --------------------------------------------------*/
+@media only screen and (min-width: 319px) {
+  .toast {
+    float: left;
+    margin-bottom: 33%;
+    margin-left: 33%;
+    width: 10%;
+    height: auto;
+  }
+  /* Alert for iPhone5 Only*/
+}
 @media only screen and (min-width: 321px) {     /* iPhone 5,6,6s,7 (320px,360px,375px) */
   .row .col.s1 {
     width: 9%;

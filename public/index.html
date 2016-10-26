@@ -13,7 +13,6 @@
   <link href="./css/css.css" rel="stylesheet" type="text/css">
   <link href="./css/materialize.css" rel="stylesheet" type="text/css" media="screen,projection" />
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://file.myfontastic.com/jrtWNCcVaoD4PJ5FgaXzjd/icons.css" rel="stylesheet">
 </head>
 <!-- Use AngularJS -->
 <body ng-app="dragApp" ng-controller="dragCtrl" ng-init="init()">
@@ -58,24 +57,24 @@
   </center>
 
   <!-- Back Front IMG! -->
-  <img ng-hide="flipStatus" class="responsive-img" src="Front.jpg">
+  <img ng-hide="flipStatus" class="responsive-img" style="width:100%; height:100%;"src="water.jpg">
   <img ng-hide="!flipStatus" class="responsive-img" src="Back.jpg">
 
 
   <!-- Button Snap! -->
   <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
       <a class="btn-floating btn-large waves-effect waves-light amber darken-3">
-        <div style="margin-top:3px" class="icon-bars" data-icon="f"></div>
+        <div class="icon-bars" data-icon="B"></div>
       </a>
       <ul>
         <li>
           <a class="btn-floating black" ng-click="flip()">
-            <div style="margin-right:11.5px; margin-top:2px;" class="icon-image" data-icon="e"></div>
+            <div class="icon-flip" data-icon="F"></div>
           </a>
         </li>
         <li>
           <a class="btn-floating black" ng-click="click()" onclick="Materialize.toast('Snap Shot!', 1000,'rounded')">
-            <div style="margin-right:11.5px; margin-top:2px;" class="icon-camera" data-icon="a"></div>
+            <div class="icon-camera" data-icon="C"></div>
           </a>
         </li>
       </ul>
