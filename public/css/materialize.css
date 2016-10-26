@@ -4096,6 +4096,13 @@ input[type=range] + .thumb {
     left: auto;
     right: auto;
   }
+  .toast {
+    float: left;
+    margin-bottom: 30%;
+    margin-left: 35%;
+    width: 10%;
+    height: auto;
+  }
   button.btn-floating {    /* PowerUp size [Parent Drag] When iPhone 6 Plus,6s Plus */
     color:#fff;
     width: 45px;
@@ -4116,6 +4123,11 @@ input[type=range] + .thumb {
     margin-left: auto;
     left: auto;
     right: auto;
+  }
+  .toast {
+    width: 123px;
+    margin-bottom: 15%;
+    margin-left: 300px;
   }
   button.btn-floating {    /* PowerUp size [Parent Drag] When All iPad */
     color:#fff;
@@ -4140,6 +4152,11 @@ input[type=range] + .thumb {
     margin-left: auto;
     left: auto;
     right: auto;
+  }
+  .toast {
+    width: 123px;
+    margin-bottom: 15%;
+    margin-left: 300px;
   }
   button.btn-floating {    /* PowerUp size [Parent Drag] When All Samsung Galaxy Tab */
     color:#fff;
@@ -4404,6 +4421,9 @@ html {
 @media only screen and (min-width: 992px) {
   html {
     font-size: 14.5px;
+  }
+  .toast {
+    margin-left: 0px;
   }
 }
 
@@ -4884,9 +4904,8 @@ small {
 /*@media only screen and (min-width: 601px) and (max-width: 992px) {
   .toast {
     width: 123px;
-    margin-bottom: 50%;
-    margin-left: 175%;
-    float: left;
+    margin-bottom: 15%;
+    margin-left: 300px;
   }
 }*/
 
