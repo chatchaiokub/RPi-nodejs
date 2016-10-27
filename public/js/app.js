@@ -4,7 +4,7 @@ angular.module('dragApp', [])
   $scope.drag = []
   $scope.addDrag = function (day) {
     var countOfDrag = $scope.drag.length
-    $scope.drag.push({days: day, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
+    $scope.drag.push({thing: 'Milk', days: day, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
   }
   $scope.dragCir = function (index) {
     $scope.drag[index].css = $('#' + index).position()
@@ -25,11 +25,10 @@ angular.module('dragApp', [])
     var datePick = new Date(date)
     var datePicked = datePick.getDate() + (datePick.getMonth() * 30)
     var dateNow = now.getDate() + (now.getMonth() * 30)
-    $scope.drag.push({days: datePicked - dateNow, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
+    $scope.drag.push({thing: 'Milk', days: datePicked - dateNow, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
   }
 
-  //  move from remask controller
-  $scope.flipStatus = false
+  // FrontEnd Control RaspberryPi //
   $scope.click = function () {
     console.log('Snapshot!')
     $http.get('/click').success(function (response) {
@@ -42,6 +41,7 @@ angular.module('dragApp', [])
       console.log('error')
     })
   }
+  $scope.flipStatus = false
   $scope.flip = function () {
     if ($scope.flipStatus === false) {
       $scope.flipStatus = true
@@ -50,6 +50,5 @@ angular.module('dragApp', [])
       $scope.flipStatus = false
       console.log($scope.flipStatus)
     }
-    console.log('flip')
   }
 })

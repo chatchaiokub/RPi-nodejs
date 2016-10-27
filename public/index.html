@@ -56,12 +56,20 @@
     </div>
   </center>
 
-  <!-- Back Front IMG! -->
-  <img ng-hide="flipStatus" class="responsive-img" style="width:100%;" src="water.jpg">
+  <!-- Front & Black IMG! -->
+  <img ng-hide="flipStatus" class="responsive-img" style="width:100%; height:400px; margin-bottom:-1px;" src="water.jpg">
   <img ng-hide="!flipStatus" class="responsive-img" src="Back.jpg">
 
+  <!-- List of Food & drink -->
+  <div class="drag-list" ng-repeat="item in drag" ng-mouseup="dragCir($index)">
+    <a class="drag-ball btn-floating waves-effect waves-light" style="background-color:#4b4242;">
+      <h1 class="drag-text flow-text amber-text text-darken-2">{{item.days}}{{init()}}</h1>
+    </a>
+      <span>{{item.thing}}</span>
+  </div>
+
   <!-- Button Snap! -->
-  <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+  <div class="fixed-action-btn horizontal click-to-toggle" style="bottom:5px; right:5px;">
       <a class="btn-floating btn-large waves-effect waves-light amber darken-3">
         <div class="icon-bars" data-icon="B"></div>
       </a>
@@ -72,14 +80,12 @@
           </a>
         </li>
         <li>
-          <a class="btn-floating black" ng-click="click()" onclick="Materialize.toast('Snap Shot!', 1000,'rounded')">
+          <a class="btn-floating black" ng-click="click()" onclick="Materialize.toast('Snap Shot!', 1500,'rounded')">
             <div class="icon-camera" data-icon="C"></div>
           </a>
         </li>
       </ul>
     </div>
-
-
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal" style="height:900px">

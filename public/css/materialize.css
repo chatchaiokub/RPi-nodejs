@@ -4073,6 +4073,25 @@ input[type=range] + .thumb {
     width: 10%;
     height: auto;
   }
+  .drag-list {
+    margin-top:1px;
+    margin-bottom:1px;
+    height:50px;
+    background-color: #181616;
+    /*#131212*/
+  }
+  .drag-ball {
+    margin-top:6.5px;
+    margin-left:8px;
+    width: 40px;
+    height: 40px;
+  }
+  .drag-text {
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top: 9px;
+    padding-left: 14px;
+  }
 }
 @media only screen and (min-width: 321px) {     /*-------------- iPhone 5,6,6s,7 (320px,360px,375px) -----------------*/
   .row .col.s1 {
@@ -4087,6 +4106,25 @@ input[type=range] + .thumb {
     margin-left: 35%;
     width: 10%;
     height: auto;
+  }
+  .drag-list {
+    margin-top:1px;
+    margin-bottom:1px;
+    height:50px;
+    background-color: #181616;
+    /*#131212*/
+  }
+  .drag-ball {
+    margin-top:6.5px;
+    margin-left:8px;
+    width: 40px;
+    height: 40px;
+  }
+  .drag-text {
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top: 9px;
+    padding-left: 14px;
   }
 }
 @media only screen and (min-width: 415px) {     /*------------------- iPhone 6 Plus,6s Plus (414px) -----------------*/
@@ -4144,6 +4182,25 @@ input[type=range] + .thumb {
     width: 75px;
     height: 75px;
     padding-top: 20px;
+  }
+  .drag-list {
+    margin-top:1px;
+    margin-bottom:1px;
+    height:50px;
+    background-color: #181616;
+    /*#131212*/
+  }
+  .drag-ball {
+    margin-top:6px;
+    margin-left:8px;
+    width: 40px;
+    height: 40px;
+  }
+  .drag-text {
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top: 8px;
+    padding-left: 12px;
   }
 }
 @media only screen and (min-width: 801px) {     /*----------------- All Samsung Galaxy Tab (800px) --------------------*/
