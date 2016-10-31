@@ -7,9 +7,6 @@ GPIO.setmode(GPIO.BCM)
 
 #------------------------
 
-RED = 17
-GPIO.setup(RED, GPIO.OUT)
-
 LDR = 4 
 
 #------------------------
@@ -28,25 +25,33 @@ def RCtime (LDR):
   return reading
 
 #---------------------------------------
+
+def on():
+	GPIO.setup(17, GPIO.OUT)
+	GPIO.output(17, GPIO.LOW)
+def off():
+	GPIO.setup(17, GPIO.OUT)
+	GPIO.output(17, GPIO.HIGH)
+
+#--------------------------------------
 z = 1  
 while True:
  
  if z==0:
-  if RCtime(LDR) > 15000:
-   GPIO.output(RED,GPIO.HIGH)
+  if RCtime(LDR) > 1700:
+   on()
    time.sleep(5)
-   os.system ("fswebcam -d /dev/video0 ./public/Front.jpg")
-   os.system ("fswebcam -d /dev/video1 ./public/Back.jpg")
+   #os.system ("fswebcam test.jpg")
    time.sleep(3)
-   GPIO.output(RED,GPIO.LOW)
+   off()
    z=1
   else:
-   GPIO.output(RED,GPIO.LOW)
+   off()
  elif z==1:
-  if RCtime(LDR) < 15000:
+  if RCtime(LDR) < 1700:
    z = 0
   else:
-   GPIO.output(RED,GPIO.LOW)
+   off()
   
  print RCtime(LDR)
 	
