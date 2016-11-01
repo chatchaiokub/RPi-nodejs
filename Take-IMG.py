@@ -38,7 +38,7 @@ z = 1
 while True:
  
  if z==0:
-  if RCtime(LDR) > 1700:
+  if RCtime(LDR) > 1500:
    on()
    time.sleep(5)
    #os.system ("fswebcam test.jpg")
@@ -48,7 +48,7 @@ while True:
   else:
    off()
  elif z==1:
-  if RCtime(LDR) < 1700:
+  if RCtime(LDR) < 1500:
    z = 0
   else:
    off()
