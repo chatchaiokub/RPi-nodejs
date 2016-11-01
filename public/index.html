@@ -93,10 +93,10 @@
       <h5>What is this?</h5>
       <input type="text" ng-model="THING" placeholder="Food name">
       <h5>Set a reminder (From today)</h5>
-      <input type="date" class="datepicker" ng-model="DATEPICKER" placeholder="Set date reminder" required>
+      <input type="date" class="datepicker" ng-model="DATEPICKER" placeholder="Set date reminder">
     </div>
     <div class="modal-footer">
-      <button class="modal-action modal-close btn-flat" ng-click="addDragCustom(THING, DATEPICKER)">SAVE</button>
+      <button class="modal-action modal-close btn-flat" ng-click="addDragCustom(THING, DATEPICKER)" ng-disabled="!DATEPICKER">SAVE</button>
       <button class="modal-action modal-close btn-flat">CANCEL</button>
     </div>
   </div>
@@ -106,7 +106,7 @@
       <h5>What is this?</h5>
       <input type="text" ng-model="update.thing" placeholder="Food name">
       <h5>Set a reminder (From today)</h5>
-      <input type="date" class="datepicker" ng-model="update.day" placeholder="Set date reminder" required>
+      <input type="date" class="datepicker" ng-model="update.day" placeholder="Set date reminder">
     </div>
     <div class="modal-footer">
       <button class="modal-action modal-close btn-flat" ng-click="updateDrag(update)">SAVE</button>
