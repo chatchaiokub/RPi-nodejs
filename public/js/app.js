@@ -27,6 +27,8 @@ angular.module('dragApp', [])
     var datePicked = datePick.getDate() + (datePick.getMonth() * 30)
     var dateNow = now.getDate() + (now.getMonth() * 30)
     $scope.drag.push({things: THING, days: datePicked - dateNow, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
+    THING = ''
+    DATEPICKER = ''
   }
   $scope.openDragUpdate = function (index) {
     $('#openDragUpdate').openModal()
@@ -39,7 +41,11 @@ angular.module('dragApp', [])
     var dateNow = now.getDate() + (now.getMonth() * 30)
     $scope.drag[$scope.index].things = update.thing
     $scope.drag[$scope.index].days = datePicked - dateNow
-    console.log($scope.drag)
+    update.thing = ''
+    update.day = ''
+  }
+  $scope.deleteDrag = function (index) {
+    $scope.drag.splice(index, 1)
   }
 
   // FrontEnd Control RaspberryPi //

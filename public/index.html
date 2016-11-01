@@ -90,25 +90,28 @@
   <!-- Modal Structure -->
   <div id="openDragCustom" class="modal" style="height:900px">
     <div class="modal-content">
-      <h5>What is this ?</h5>
-      <input type="text" ng-model="THING" placeholder="Insert list here">
-      <h5>Set a reminder (from today)</h5>
-      <input type="date" class="datepicker" ng-model="DATEPICKER" placeholder="Set date here">
+      <h5>What is this?</h5>
+      <input type="text" ng-model="THING" placeholder="Food name">
+      <h5>Set a reminder (From today)</h5>
+      <input type="date" class="datepicker" ng-model="DATEPICKER" placeholder="Set date reminder" required>
     </div>
     <div class="modal-footer">
-      <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="addDragCustom(THING, DATEPICKER)">OK</button>
+      <button class="modal-action modal-close btn-flat" ng-click="addDragCustom(THING, DATEPICKER)">SAVE</button>
+      <button class="modal-action modal-close btn-flat">CANCEL</button>
     </div>
   </div>
 
   <div id="openDragUpdate" class="modal" style="height:900px">
     <div class="modal-content">
-      <h5>What is this ?</h5>
-      <input type="text" ng-model="update.thing">
-      <h5>Set a reminder (from today)</h5>
-      <input type="date" class="datepicker" ng-model="update.day">
+      <h5>What is this?</h5>
+      <input type="text" ng-model="update.thing" placeholder="Food name">
+      <h5>Set a reminder (From today)</h5>
+      <input type="date" class="datepicker" ng-model="update.day" placeholder="Set date reminder" required>
     </div>
     <div class="modal-footer">
-      <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="updateDrag(update)">OK</button>
+      <button class="modal-action modal-close btn-flat" ng-click="updateDrag(update)">SAVE</button>
+      <button class="modal-action modal-close btn-flat">CANCEL</button>
+      <button class="modal-action modal-close btn-flat" ng-click="deleteDrag($index)">DELETE</button>
     </div>
   </div>
 

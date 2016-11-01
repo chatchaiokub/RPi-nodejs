@@ -62,6 +62,9 @@ body{
 .icon-flip:before {
   content: "\46";
 }
+.icon-calendar:before {
+  content: "\61";
+}
 
 .icon-camera {
   font-size: 20px;
@@ -74,6 +77,10 @@ body{
   margin-top:4px;
 }
 .icon-bars {
+  font-size: 22px;
+  margin-top:4px;
+}
+.icon-calendar {
   font-size: 22px;
   margin-top:4px;
 }
