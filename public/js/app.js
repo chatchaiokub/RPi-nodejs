@@ -3,10 +3,6 @@ angular.module('dragApp', [])
 .controller('dragCtrl', function ($scope, $http) {
   $scope.drag = []
   $scope.index = ''
-  $scope.addDrag = function (day) {
-    var countOfDrag = $scope.drag.length
-    $scope.drag.push({thing: 'Milk', days: day, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
-  }
   $scope.dragCir = function (index) {
     $scope.drag[index].css = $('#' + index).position()
   }
@@ -17,28 +13,31 @@ angular.module('dragApp', [])
       $('#' + item.counts).css(item.css)
     })
   }
-  $scope.addDragCustom = function () {
-    $('#modal1').openModal()
+  $scope.addDrag = function (day) {
+    var countOfDrag = $scope.drag.length
+    $scope.drag.push({things: '', days: day, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
   }
-  $scope.customDay = function (date) {
+  $scope.openDragCustom = function () {
+    $('#openDragCustom').openModal()
+  }
+  $scope.addDragCustom = function (THING, DATEPICKER) {
     var countOfDrag = $scope.drag.length
     var now = new Date()
-    var datePick = new Date(date)
+    var datePick = new Date(DATEPICKER)
     var datePicked = datePick.getDate() + (datePick.getMonth() * 30)
     var dateNow = now.getDate() + (now.getMonth() * 30)
-    $scope.drag.push({thing: 'Milk', days: datePicked - dateNow, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
+    $scope.drag.push({things: THING, days: datePicked - dateNow, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
   }
-  $scope.openModal2 = function (index) {
-    $('#modal2').openModal()
+  $scope.openDragUpdate = function (index) {
+    $('#openDragUpdate').openModal()
     $scope.index = index
   }
-  $scope.update = function (modal2) {
-    console.log(modal2, $scope.index)
+  $scope.updateDrag = function (update) {
     var now = new Date()
-    var datePick = new Date(modal2.date)
+    var datePick = new Date(update.day)
     var datePicked = datePick.getDate() + (datePick.getMonth() * 30)
     var dateNow = now.getDate() + (now.getMonth() * 30)
-    $scope.drag[$scope.index].thing = modal2.thing
+    $scope.drag[$scope.index].things = update.thing
     $scope.drag[$scope.index].days = datePicked - dateNow
     console.log($scope.drag)
   }
