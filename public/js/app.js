@@ -2,6 +2,7 @@
 angular.module('dragApp', [])
 .controller('dragCtrl', function ($scope, $http) {
   $scope.drag = []
+  $scope.index = ''
   $scope.addDrag = function (day) {
     var countOfDrag = $scope.drag.length
     $scope.drag.push({thing: 'Milk', days: day, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
@@ -11,7 +12,7 @@ angular.module('dragApp', [])
   }
   $scope.init = function () {
     $scope.drag.forEach(function (item) {
-      console.log(item)
+      // console.log(item)
       $('#' + item.counts).draggable()
       $('#' + item.counts).css(item.css)
     })
@@ -26,6 +27,20 @@ angular.module('dragApp', [])
     var datePicked = datePick.getDate() + (datePick.getMonth() * 30)
     var dateNow = now.getDate() + (now.getMonth() * 30)
     $scope.drag.push({thing: 'Milk', days: datePicked - dateNow, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
+  }
+  $scope.openModal2 = function (index) {
+    $('#modal2').openModal()
+    $scope.index = index
+  }
+  $scope.update = function (modal2) {
+    console.log(modal2, $scope.index)
+    var now = new Date()
+    var datePick = new Date(modal2.date)
+    var datePicked = datePick.getDate() + (datePick.getMonth() * 30)
+    var dateNow = now.getDate() + (now.getMonth() * 30)
+    $scope.drag[$scope.index].thing = modal2.thing
+    $scope.drag[$scope.index].days = datePicked - dateNow
+    console.log($scope.drag)
   }
 
   // FrontEnd Control RaspberryPi //
