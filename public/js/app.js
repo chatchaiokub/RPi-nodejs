@@ -33,6 +33,8 @@ angular.module('dragApp', [])
   $scope.openDragUpdate = function (index) {
     $('#openDragUpdate').openModal()
     $scope.index = index
+    $scope.update.thing = $scope.drag[index].things
+    $scope.update.day = $scope.drag[index].days
   }
   $scope.updateDrag = function (update) {
     var now = new Date()
@@ -41,8 +43,6 @@ angular.module('dragApp', [])
     var dateNow = now.getDate() + (now.getMonth() * 30)
     $scope.drag[$scope.index].things = update.thing
     $scope.drag[$scope.index].days = datePicked - dateNow
-    update.thing = ''
-    update.day = ''
   }
   $scope.deleteDrag = function (index) {
     $scope.drag.splice(index, 1)
