@@ -109,7 +109,7 @@
       <input type="date" class="datepicker" ng-model="update.day" placeholder="Set date reminder">
     </div>
     <div class="modal-footer">
-      <button class="modal-action modal-close btn-flat" ng-click="updateDrag(update)">SAVE</button>
+      <button class="modal-action modal-close btn-flat" ng-click="updateDrag(update)" ng-disabled="!update.day">SAVE</button>
       <button class="modal-action modal-close btn-flat">CANCEL</button>
       <button class="modal-action modal-close btn-flat" ng-click="deleteDrag($index)">DELETE</button>
     </div>
