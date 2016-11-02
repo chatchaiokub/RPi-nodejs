@@ -33,10 +33,8 @@ angular.module('dragApp', [])
   $scope.openDragUpdate = function (index) {
     $('#openDragUpdate').openModal()
     $scope.index = index
-    $scope.update.thing = $scope.drag[$scope.index].things
-    $scope.update.day = $scope.drag[$scope.index].days
-    // $scope.update.thing = ''
-    // $scope.update.day = ''
+    $scope.update.thing = ''
+    $scope.update.day = ''
   }
   $scope.updateDrag = function (update) {
     var now = new Date()
