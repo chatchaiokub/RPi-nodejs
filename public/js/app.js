@@ -8,7 +8,6 @@ angular.module('dragApp', [])
   }
   $scope.init = function () {
     $scope.drag.forEach(function (item) {
-      // console.log(item)
       $('#' + item.counts).draggable()
       $('#' + item.counts).css(item.css)
     })
@@ -20,29 +19,35 @@ angular.module('dragApp', [])
   $scope.openDragCustom = function () {
     $('#openDragCustom').openModal()
   }
-  $scope.addDragCustom = function (THING, DATEPICKER) {
+  $scope.addDragCustom = function (THING, DAY) {
     var countOfDrag = $scope.drag.length
     var now = new Date()
-    var datePick = new Date(DATEPICKER)
-    var datePicked = datePick.getDate() + (datePick.getMonth() * 30)
-    var dateNow = now.getDate() + (now.getMonth() * 30)
-    $scope.drag.push({things: THING, days: datePicked - dateNow, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
+    var datePick = new Date(DAY)
+    var SUM = Math.ceil((datePick - now) / (1000 * 3600 * 24))
+    $scope.drag.push({things: THING, days: SUM, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
     THING = ''
-    DATEPICKER = ''
+    DAY = ''
   }
-  $scope.openDragUpdate = function (index) {
+  $scope.openDragUpdate = function (item, index) {
     $('#openDragUpdate').openModal()
     $scope.index = index
-    $scope.update.thing = ''
-    $scope.update.day = ''
+    $scope.updateThing = item.things
+    $scope.updateDay = item.days
   }
-  $scope.updateDrag = function (update) {
-    var now = new Date()
-    var datePick = new Date(update.day)
-    var datePicked = datePick.getDate() + (datePick.getMonth() * 30)
-    var dateNow = now.getDate() + (now.getMonth() * 30)
-    $scope.drag[$scope.index].things = update.thing
-    $scope.drag[$scope.index].days = datePicked - dateNow
+  $scope.updateDrag = function (updateThing, updateDay) {
+    if ($scope.drag[$scope.index].things === updateThing) {
+      console.log('true')
+    }if ($scope.drag[$scope.index].days === updateDay) {
+      console.log('true')
+    }if ($scope.drag[$scope.index].things !== updateThing) {
+      $scope.drag[$scope.index].things = updateThing
+    }if ($scope.drag[$scope.index].days !== updateDay) {
+      var noww = new Date()
+      var datePickk = new Date(updateDay)
+      var SUMM = Math.ceil((datePickk - noww) / (1000 * 3600 * 24))
+      $scope.drag[$scope.index].things = updateThing
+      $scope.drag[$scope.index].days = SUMM
+    }
   }
   $scope.deleteDrag = function (index) {
     $scope.drag.splice(index, 1)

@@ -49,7 +49,7 @@
           <button class="btn-floating waves-effect waves-light orange" ng-click="openDragCustom()"><b>+</b></button>
         </div>
         <div id="{{item.counts}}" ng-repeat="item in drag" ng-mouseup="dragCir($index)">
-          <p class="btn-floating orange Child-drag" ng-click="openDragUpdate($index)">{{item.days}}</p>
+          <p class="btn-floating orange Child-drag" ng-click="openDragUpdate(item,$index)">{{item.days}}</p>
           {{init()}}
         </div>
       </div>
@@ -61,11 +61,11 @@
   <img ng-hide="!flipStatus" class="responsive-img" src="Back.jpg">
 
   <!-- List of Food & drink -->
-  <div class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate($index)">
-    <a class="drag-ball btn-floating waves-effect waves-light" style="background-color:#4b4242;">
-      <h1 class="drag-text flow-text amber-text text-darken-2">{{item.days}}{{init()}}</h1>
-    </a>
-      <span class="white-text">{{item.things}}</span>
+  <div class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
+      <a class="drag-ball btn-floating waves-effect waves-light" style="background-color:#4b4242;">
+        <h1 class="drag-text flow-text amber-text text-darken-2">{{item.days}}{{init()}}</h1>
+      </a>
+      <span class="flow-text white-text">{{item.things}}</span>
   </div>
 
   <!-- Button Snap! -->
@@ -93,25 +93,35 @@
       <h5>What is this?</h5>
       <input type="text" ng-model="THING" placeholder="Food name">
       <h5>Set a reminder (From today)</h5>
-      <input type="date" class="datepicker" ng-model="DATEPICKER" placeholder="Set date reminder">
+      <input type="date" class="datepicker" ng-model="DAY" placeholder="Set date reminder">
     </div>
     <div class="modal-footer">
-      <button class="modal-action modal-close btn-flat" ng-click="addDragCustom(THING, DATEPICKER)" ng-disabled="!DATEPICKER">SAVE</button>
+      <button class="modal-action modal-close btn-flat" ng-click="addDragCustom(THING, DAY)" ng-disabled="!DAY">SAVE</button>
       <button class="modal-action modal-close btn-flat">CANCEL</button>
     </div>
   </div>
 
-  <div id="openDragUpdate" class="modal" style="height:900px">
+  <div id="openDragUpdate" class="modal">
     <div class="modal-content">
-      <h5>What is this?</h5>
-      <input type="text" ng-model="update.thing" placeholder="Food name">
-      <h5>Set a reminder (From today)</h5>
-      <input type="date" class="datepicker" ng-model="update.day" placeholder="Set date reminder">
+      <h5 class="flow-text">What is this?</h5>
+      <input type="text" ng-model="updateThing" placeholder="Enter food name here">
+      <h5 class="flow-text">Set a reminder (From today)</h5>
+      <input type="date" class="datepicker" ng-model="updateDay" placeholder="Set date reminder">
     </div>
     <div class="modal-footer">
-      <button class="modal-action modal-close btn-flat" ng-click="updateDrag(update)" ng-disabled="!update.day">SAVE</button>
-      <button class="modal-action modal-close btn-flat">CANCEL</button>
-      <button class="modal-action modal-close btn-flat" ng-click="deleteDrag($index)">DELETE</button>
+      <div class="container">
+      <div class="row">
+        <div class="col s4 m4 l4">
+          <button class="modal-action modal-close btn-flat" ng-click="deleteDrag($index)">DELETE</button>
+        </div>
+        <div class="col s4 m4 l4">
+          <button class="modal-action modal-close btn-flat">CANCEL</button>
+        </div>
+        <div class="col s4 m4 l4">
+          <button class="modal-action modal-close btn-flat" ng-click="updateDrag(updateThing, updateDay)">SAVE</button>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 
