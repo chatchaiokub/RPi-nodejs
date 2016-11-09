@@ -25,8 +25,8 @@ angular.module('dragApp', [])
     var datePick = new Date(DAY)
     var SUM = Math.ceil((datePick - now) / (1000 * 3600 * 24))
     $scope.drag.push({things: THING, days: SUM, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
-    THING = ''
-    DAY = ''
+    $scope.THING = ''
+    $scope.DAY = ''
   }
   $scope.openDragUpdate = function (item, index) {
     $('#openDragUpdate').openModal()
