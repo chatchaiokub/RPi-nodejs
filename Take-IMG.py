@@ -38,17 +38,17 @@ z = 1
 while True:
  
  if z==0:
-  if RCtime(LDR) > 1500:
+  if RCtime(LDR) > 20000:
    on()
    time.sleep(5)
-   #os.system ("fswebcam test.jpg")
+   os.system ("fswebcam -d /dev/video0 -r 1280x780 ./public/Front.jpg")
    time.sleep(3)
    off()
    z=1
   else:
    off()
  elif z==1:
-  if RCtime(LDR) < 1500:
+  if RCtime(LDR) < 20000:
    z = 0
   else:
    off()
