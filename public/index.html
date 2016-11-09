@@ -62,9 +62,9 @@
 
   <!-- List of Food & drink -->
   <div class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
-      <a class="drag-ball btn-floating waves-effect waves-light" style="background-color:#4b4242;">
+      <button class="drag-ball btn-floating waves-effect waves-light" style="background-color:#4b4242;">
         <h1 class="drag-text flow-text amber-text text-darken-2">{{item.days}}{{init()}}</h1>
-      </a>
+      </button>
       <span class="flow-text white-text">{{item.things}}</span>
   </div>
 
@@ -90,14 +90,22 @@
   <!-- Modal Structure -->
   <div id="openDragCustom" class="modal" style="height:900px">
     <div class="modal-content">
-      <h5>What is this?</h5>
+      <h5 class="flow-text">What is this?</h5>
       <input type="text" ng-model="THING" placeholder="Food name">
-      <h5>Set a reminder (From today)</h5>
+      <h5 class="flow-text">Set a reminder (From today)</h5>
       <input type="date" class="datepicker" ng-model="DAY" placeholder="Set date reminder">
     </div>
     <div class="modal-footer">
-      <button class="modal-action modal-close btn-flat" ng-click="addDragCustom(THING, DAY)" ng-disabled="!DAY">SAVE</button>
-      <button class="modal-action modal-close btn-flat">CANCEL</button>
+      <div class="container">
+      <div class="row">
+        <div class="col s6 m6 l6">
+          <button class="modal-action modal-close btn-flat">CANCEL</button>
+        </div>
+        <div class="col s6 m6 l6">
+          <button class="modal-action modal-close btn-flat" ng-click="addDragCustom(THING, DAY)" ng-disabled="!DAY">SAVE</button>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 
