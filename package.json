@@ -4,7 +4,8 @@
   "description": "ERROR: No README data found!",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "start": "python Take-IMG.py"
   },
   "author": "",
   "license": "ISC",
