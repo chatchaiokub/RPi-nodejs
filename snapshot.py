@@ -1,5 +1,16 @@
 #!/usr/bin/python
-import os
+import RPi.GPIO as GPIO
+import time
 
-os.system ("fswebcam -d /dev/video0 -r 1280x780 ./public/Front.jpg")
+GPIO.setmode(GPIO.BCM)
 
+def on():
+	GPIO.setup(17, GPIO.OUT)
+	GPIO.output(17, GPIO.LOW)
+def off():
+	GPIO.setup(17, GPIO.OUT)
+	GPIO.output(17, GPIO.HIGH)
+
+on()
+time.sleep(3)
+off()
