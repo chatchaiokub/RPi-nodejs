@@ -50,7 +50,7 @@ angular.module('dragApp', [])
     }
   }
   $scope.deleteDrag = function (index) {
-    $scope.drag.splice(index, 1)
+    $scope.drag.splice($scope.index, 1)
   }
 
   // FrontEnd Control RaspberryPi //

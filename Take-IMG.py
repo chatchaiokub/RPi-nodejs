@@ -40,7 +40,7 @@ while True:
  if z==0:
   if RCtime(LDR) > 20000:
    on()
-   time.sleep(5)
+   time.sleep(3)
    os.system ("fswebcam -d /dev/video0 -r 1280x780 --no-banner ./public/Front1.jpg")
    os.system ("fswebcam -d /dev/video1 -r 1280x780 --no-banner ./public/Front2.jpg")
    os.system ("fswebcam -d /dev/video2 -r 1280x780 --no-banner ./public/Back.jpg")
