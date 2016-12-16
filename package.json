@@ -17,7 +17,9 @@
   },
   "dependencies": {
     "angular": "^1.5.0",
+    "body-parser": "^1.15.2",
     "express": "^4.13.3",
+    "mongoose": "^4.7.2",
     "python-shell": "^0.3.0"
   }
 }

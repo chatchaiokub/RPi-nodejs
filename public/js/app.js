@@ -1,11 +1,24 @@
 /* global $, angular */
 angular.module('dragApp', [])
-.controller('dragCtrl', function ($scope, $http) {
+.controller('dragCtrl', function ($scope, $http, $q) {
   $scope.drag = []
   $scope.index = ''
-  $scope.dragCir = function (index) {
-    $scope.drag[index].css = $('#' + index).position()
+
+  $scope.getData = function () {
+    $http.get('/api').success(function (response) {
+      $scope.drag = response
+    })
   }
+  $scope.getData()
+  $scope.dragCir = function (index) {
+    var css = $('#' + index).position()
+    css.position = 'absolute'
+    $scope.drag[index].css = css
+    $http.put('/api/' + $scope.drag[index]['_id'], $scope.drag[index]).then(function (res) {
+      console.log(res.data)
+    })
+  }
+
   $scope.init = function () {
     $scope.drag.forEach(function (item) {
       $('#' + item.counts).draggable()
@@ -14,7 +27,12 @@ angular.module('dragApp', [])
   }
   $scope.addDrag = function (day) {
     var countOfDrag = $scope.drag.length
-    $scope.drag.push({things: '', days: day, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
+    var dataForPush = {things: '', days: day, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}}
+    $http.post('/api', dataForPush).success(function (response) {
+      $scope.drag.push(response)
+    }).error(function (data, status, headers, config) {
+      console.log('error')
+    })
   }
   $scope.openDragCustom = function () {
     $('#openDragCustom').openModal()
@@ -48,9 +66,15 @@ angular.module('dragApp', [])
       $scope.drag[$scope.index].things = updateThing
       $scope.drag[$scope.index].days = SUMM
     }
+    $http.put('/api/' + $scope.drag[$scope.index]['_id'], $scope.drag[$scope.index]).then(function (res) {
+      console.log(res.data)
+    })
   }
   $scope.deleteDrag = function (index) {
-    $scope.drag.splice($scope.index, 1)
+    $http.delete('/api/' + $scope.drag[$scope.index]['_id']).then(function (res) {
+      $scope.drag.splice($scope.index, 1)
+      console.log(res.data)
+    })
   }
 
   // FrontEnd Control RaspberryPi //
