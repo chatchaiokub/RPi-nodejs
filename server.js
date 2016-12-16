@@ -7,10 +7,9 @@ var app = express()
 
 mongoose.connect('mongodb://fridge:fridge@ds133348.mlab.com:33348/smart-fridge')
 
-app.use(express.static('public'))
 app.use(bodyParser.json())
 
-app.use(express.static('public'))
+app.use(express.static('./public'))
 app.use('/', snap)
 app.use('/', db)
 
