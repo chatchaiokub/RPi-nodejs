@@ -42,9 +42,14 @@ angular.module('dragApp', [])
     var now = new Date()
     var datePick = new Date(DAY)
     var SUM = Math.ceil((datePick - now) / (1000 * 3600 * 24))
-    $scope.drag.push({things: THING, days: SUM, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}})
-    $scope.THING = ''
-    $scope.DAY = ''
+    var dataCustomForPush = {things: THING, days: SUM, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}}
+    $http.post('/api', dataCustomForPush).success(function (response) {
+      $scope.drag.push(response)
+      $scope.THING = ''
+      $scope.DAY = ''
+    }).error(function (data, status, headers, config) {
+      console.log('error')
+    })
   }
   $scope.openDragUpdate = function (item, index) {
     $('#openDragUpdate').openModal()
