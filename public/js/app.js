@@ -10,7 +10,7 @@ angular.module('dragApp', [])
     })
   }
   $scope.getData()
-  $scope.dragCir = function (index) {
+  $scope.positionDrag = function (index) {
     var css = $('#' + index).position()
     css.position = 'absolute'
     $scope.drag[index].css = css
@@ -21,13 +21,14 @@ angular.module('dragApp', [])
 
   $scope.init = function () {
     $scope.drag.forEach(function (item) {
-      $('#' + item.counts).draggable()
-      $('#' + item.counts).css(item.css)
+      $('#' + item.ArrDrag).draggable()
+      $('#' + item.ArrDrag).css(item.css)
     })
   }
   $scope.addDrag = function (day) {
-    var countOfDrag = $scope.drag.length
-    var dataForPush = {things: '', days: day, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}}
+    var ArrDrag = $scope.drag.length
+    var endDate = new Date(+new Date() + (day * 24 * 60 * 60 * 1000))
+    var dataForPush = {things: '', startDate: new Date(), endDate: endDate, days: day, ArrDrag: ArrDrag, css: {top: 200, left: 250, position: 'absolute'}}
     $http.post('/api', dataForPush).success(function (response) {
       $scope.drag.push(response)
     }).error(function (data, status, headers, config) {
@@ -38,11 +39,12 @@ angular.module('dragApp', [])
     $('#openDragCustom').openModal()
   }
   $scope.addDragCustom = function (THING, DAY) {
-    var countOfDrag = $scope.drag.length
+    var ArrDrag = $scope.drag.length
     var now = new Date()
     var datePick = new Date(DAY)
     var SUM = Math.ceil((datePick - now) / (1000 * 3600 * 24))
-    var dataCustomForPush = {things: THING, days: SUM, counts: countOfDrag, css: {top: 200, left: 250, position: 'absolute'}}
+    var endDate = new Date(+new Date() + (SUM * 24 * 60 * 60 * 1000))
+    var dataCustomForPush = {things: THING, startDate: new Date(), endDate: endDate, days: SUM, ArrDrag: ArrDrag, css: {top: 200, left: 250, position: 'absolute'}}
     $http.post('/api', dataCustomForPush).success(function (response) {
       $scope.drag.push(response)
       $scope.THING = ''
@@ -70,6 +72,7 @@ angular.module('dragApp', [])
       var SUMM = Math.ceil((datePickk - noww) / (1000 * 3600 * 24))
       $scope.drag[$scope.index].things = updateThing
       $scope.drag[$scope.index].days = SUMM
+      $scope.drag[$scope.index].endDate = new Date(updateDay)
     }
     $http.put('/api/' + $scope.drag[$scope.index]['_id'], $scope.drag[$scope.index]).then(function (res) {
       console.log(res.data)
@@ -80,6 +83,12 @@ angular.module('dragApp', [])
       $scope.drag.splice($scope.index, 1)
       console.log(res.data)
     })
+  }
+  $scope.countExpireDate = function (date) {
+    var now = new Date()
+    var datePick = new Date(date)
+    var SUM = Math.ceil((datePick - now) / (1000 * 3600 * 24))
+    return SUM
   }
 
   // FrontEnd Control RaspberryPi //

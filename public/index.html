@@ -21,7 +21,7 @@
     <div class="container">
       <div class="row">
         <br>
-        <span class="flow-text white-text" ng-click="getData()"><center>Click & Drag labels onto food items.</center></span>
+        <span class="flow-text white-text"><center>Click & Drag labels onto food items.</center></span>
       </div>
       <div class="row FONTs1">
         <div class="center-align col s1 m1 l1">
@@ -48,8 +48,8 @@
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
           <button class="btn-floating waves-effect waves-light orange" ng-click="openDragCustom()"><b>+</b></button>
         </div>
-        <div id="{{item.counts}}" ng-repeat="item in drag" ng-mouseup="dragCir($index)">
-          <p class="btn-floating orange Child-drag" ng-click="openDragUpdate(item,$index)">{{item.days}}</p>
+        <div id="{{item.ArrDrag}}" ng-repeat="item in drag" ng-mouseup="positionDrag($index)">
+          <p class="btn-floating orange Child-drag" ng-click="openDragUpdate(item, $index)">{{countExpireDate(item.endDate)}}</p>
           {{init()}}
         </div>
       </div>
@@ -64,7 +64,7 @@
   <!-- List of Food & drink -->
   <div class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
       <button class="drag-ball btn-floating waves-effect waves-light" style="background-color:#4b4242;">
-        <h1 class="drag-text flow-text amber-text text-darken-2">{{item.days}}</h1>
+        <h1 class="drag-text flow-text amber-text text-darken-2">{{countExpireDate(item.endDate)}}</h1>
       </button>
       <span class="flow-text white-text">{{item.things}}</span>
   </div>
@@ -103,7 +103,7 @@
           <button class="modal-action modal-close btn-flat">CANCEL</button>
         </div>
         <div class="col s6 m6 l6">
-          <button class="modal-action modal-close btn-flat" ng-click="addDragCustom(THING, DAY)" ng-disabled="!DAY">SAVE</button>
+          <button class="modal-action modal-close btn-flat" ng-click="addDragCustom(THING, DAY)" ng-class="{'disabled': !DAY}" ng-disabled="!DAY">SAVE</button>
         </div>
       </div>
       </div>
@@ -142,8 +142,9 @@
     });
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
+      selectYears: 15, // Creates a dropdown of 15 years to control year
+      min: new Date()
+    })
   </script>
 
 </body>
