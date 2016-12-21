@@ -99,7 +99,7 @@ angular.module('dragApp', [])
       console.log(response)
       setTimeout(function () {
         window.location = 'index.html'
-      }, 6000)
+      }, 3000)
     }).error(function (data, status, headers, config) {
       console.log('error')
     })
