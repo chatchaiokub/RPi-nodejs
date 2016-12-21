@@ -36,9 +36,9 @@ def off():
 #--------------------------------------
 z = 1
 while True:
-
+	#20000
  if z==0:
-  if RCtime(LDR) > 20000:
+  if RCtime(LDR) > 5000:
    on()
    time.sleep(3)
    os.system ("fswebcam -d /dev/video0 -r 1280x780 --no-banner ./public/Front1.jpg")
