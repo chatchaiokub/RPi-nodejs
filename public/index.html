@@ -59,7 +59,7 @@
   <!-- Front & Black IMG! -->
   <img ng-hide="flipStatus" class="responsive-img" src="Front1.jpg" style="width:500px;">
   <img ng-hide="flipStatus" class="responsive-img" src="Front2.jpg" style="width:500px;">
-  <img ng-hide="!flipStatus" class="responsive-img" src="Back.jpg">
+  <img ng-hide="!flipStatus" width="100%" height="300px;" src="Back.jpg">
 
   <!-- List of Food & drink -->
   <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
