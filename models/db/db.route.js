@@ -24,7 +24,7 @@
   })
 
   router.get('/api/:id', function (req, res) {
-    DataFidge.findOne({ _id: req.params.id })
+    DataFidge.findOne({ '_id': req.params.id })
     .exec(function (err, done) {
       if (err) console.log(err)
       res.send(done)
@@ -33,7 +33,7 @@
 
   router.put('/api/:id', function (req, res) {
     DataFidge.findOneAndUpdate(
-      { _id: req.params.id },
+      { '_id': req.params.id },
       { $set: req.body },
       { new: true })
       .exec(function (err, done) {
@@ -43,7 +43,7 @@
   })
 
   router.delete('/api/:id', function (req, res) {
-    DataFidge.findOneAndRemove({ _id: req.params.id })
+    DataFidge.findOneAndRemove({ '_id': req.params.id })
     .exec(function (err, done) {
       if (err) console.log(err)
       res.send(done)
