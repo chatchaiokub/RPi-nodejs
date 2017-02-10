@@ -110,11 +110,42 @@ angular.module('dragApp', [])
     var endDate = new Date(+new Date() + (SUM * 24 * 60 * 60 * 1000))
     var dataFreezerForPush = {things: TFREEZER, startDate: new Date(), endDate: endDate, days: SUM, ArrDrag: ArrDrag}
     $http.post('/freezer', dataFreezerForPush).success(function (response) {
-      $scope.drag.push(response)
+      $scope.freezer.push(response)
       $scope.TFREEZER = ''
       $scope.DFREEZER = ''
     }).error(function (data, status, headers, config) {
       console.log('error')
+    })
+  }
+  $scope.openFreezerUpdate = function (item, index) {
+    $('#openFreezerUpdate').openModal()
+    $scope.index = index
+    $scope.updateTFREEZER = item.things
+    $scope.updateDFREEZER = item.days
+  }
+  $scope.updateFreezer = function (updateTFREEZER, updateDFREEZER) {
+    if ($scope.freezer[$scope.index].things === updateTFREEZER) {
+      console.log('true')
+    }if ($scope.freezer[$scope.index].days === updateDFREEZER) {
+      console.log('true')
+    }if ($scope.freezer[$scope.index].things !== updateTFREEZER) {
+      $scope.freezer[$scope.index].things = updateTFREEZER
+    }if ($scope.freezer[$scope.index].days !== updateDFREEZER) {
+      var noww = new Date()
+      var datePickk = new Date(updateDFREEZER)
+      var SUMM = Math.ceil((datePickk - noww) / (1000 * 3600 * 24))
+      $scope.freezer[$scope.index].things = updateTFREEZER
+      $scope.freezer[$scope.index].days = SUMM
+      $scope.freezer[$scope.index].endDate = new Date(updateDFREEZER)
+    }
+    $http.put('/freezer/' + $scope.freezer[$scope.index]['_id'], $scope.freezer[$scope.index]).then(function (res) {
+      console.log(res.data)
+    })
+  }
+  $scope.deleteFreezer = function (index) {
+    $http.delete('/freezer/' + $scope.freezer[$scope.index]['_id']).then(function (res) {
+      $scope.freezer.splice($scope.index, 1)
+      console.log(res.data)
     })
   }
 

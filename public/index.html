@@ -70,7 +70,7 @@
   </div>
 
   <!-- List of Freezer -->
-  <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in freezer">
+  <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in freezer" ng-click="openFreezerUpdate(item, $index)">
       <span class="flow-text white-text">{{item.things}}</span>
   </div>
 
@@ -160,6 +160,31 @@
         </div>
         <div class="col s6 m6 l6">
           <button class="modal-action modal-close btn-flat" ng-click="addDataFreezer(TFREEZER, DFREEZER)" ng-class="{'disabled': !DFREEZER}" ng-disabled="!DFREEZER">SAVE</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="openFreezerUpdate" class="modal">
+    <div class="modal-content">
+      <h5 class="flow-text">What is this?</h5>
+      <input type="text" ng-model="updateTFREEZER" placeholder="Enter food name here">
+      <h5 class="flow-text">Set a reminder (From today)<i class="icon-calendar" data-icon="a"></i></h5>
+      <input type="date" class="datepicker" ng-model="updateDFREEZER" placeholder="Set date reminder">
+      <!-- <i class="icon-calendar" data-icon="a"></i> -->
+    </div>
+    <div class="modal-footer">
+      <div class="container">
+      <div class="row">
+        <div class="col s4 m4 l4">
+          <button class="modal-action modal-close btn-flat" ng-click="deleteFreezer(index)">DELETE</button>
+        </div>
+        <div class="col s4 m4 l4">
+          <button class="modal-action modal-close btn-flat">CANCEL</button>
+        </div>
+        <div class="col s4 m4 l4">
+          <button class="modal-action modal-close btn-flat" ng-click="updateFreezer(updateTFREEZER, updateDFREEZER)">SAVE</button>
         </div>
       </div>
       </div>
