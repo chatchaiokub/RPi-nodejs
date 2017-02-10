@@ -69,12 +69,22 @@
       <span class="flow-text white-text">{{item.things}}</span>
   </div>
 
+  <!-- List of Freezer -->
+  <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in freezer">
+      <span class="flow-text white-text">{{item.things}}</span>
+  </div>
+
   <!-- Button Snap! -->
   <div class="fixed-action-btn horizontal click-to-toggle" style="bottom:5px; right:5px;">
       <a class="btn-floating btn-large waves-effect waves-light amber darken-3">
         <div class="icon-bars" data-icon="B"></div>
       </a>
       <ul>
+        <li>
+          <a class="btn-floating black" ng-click="openFreezer()">
+            <div class="icon-bars" data-icon="B"></div>
+          </a>
+        </li>
         <li>
           <a class="btn-floating black" ng-click="flip()">
             <div class="icon-flip" data-icon="F"></div>
@@ -129,6 +139,27 @@
         </div>
         <div class="col s4 m4 l4">
           <button class="modal-action modal-close btn-flat" ng-click="updateDrag(updateThing, updateDay)">SAVE</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="openFreezer" class="modal" style="height:900px">
+    <div class="modal-content">
+      <h5 class="flow-text">Freezer</h5>
+      <input type="text" ng-model="TFREEZER" placeholder="Food name">
+      <h5 class="flow-text">Set a reminder (From today)</h5>
+      <input type="date" class="datepicker" ng-model="DFREEZER" placeholder="Set date reminder">
+    </div>
+    <div class="modal-footer">
+      <div class="container">
+      <div class="row">
+        <div class="col s6 m6 l6">
+          <button class="modal-action modal-close btn-flat">CANCEL</button>
+        </div>
+        <div class="col s6 m6 l6">
+          <button class="modal-action modal-close btn-flat" ng-click="addDataFreezer(TFREEZER, DFREEZER)" ng-class="{'disabled': !DFREEZER}" ng-disabled="!DFREEZER">SAVE</button>
         </div>
       </div>
       </div>

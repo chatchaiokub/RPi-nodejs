@@ -2,6 +2,7 @@
 angular.module('dragApp', [])
 .controller('dragCtrl', function ($scope, $http, $q) {
   $scope.drag = []
+  $scope.freezer = []
   $scope.index = ''
 
   $scope.getData = function () {
@@ -91,7 +92,33 @@ angular.module('dragApp', [])
     return SUM
   }
 
-  // FrontEnd Control RaspberryPi //
+  // Freeze ///////////////////////////////////////////////////////////////////
+  $scope.getDataFreezer = function () {
+    $http.get('/freezer').success(function (response) {
+      $scope.freezer = response
+    })
+  }
+  $scope.getDataFreezer()
+  $scope.openFreezer = function () {
+    $('#openFreezer').openModal()
+  }
+  $scope.addDataFreezer = function (TFREEZER, DFREEZER) {
+    var ArrDrag = $scope.freezer.length
+    var now = new Date()
+    var datePick = new Date(DFREEZER)
+    var SUM = Math.ceil((datePick - now) / (1000 * 3600 * 24))
+    var endDate = new Date(+new Date() + (SUM * 24 * 60 * 60 * 1000))
+    var dataFreezerForPush = {things: TFREEZER, startDate: new Date(), endDate: endDate, days: SUM, ArrDrag: ArrDrag}
+    $http.post('/freezer', dataFreezerForPush).success(function (response) {
+      $scope.drag.push(response)
+      $scope.TFREEZER = ''
+      $scope.DFREEZER = ''
+    }).error(function (data, status, headers, config) {
+      console.log('error')
+    })
+  }
+
+  // FrontEnd Control RaspberryPi /////////////////////////////////////////////
   $scope.click = function () {
     console.log('Snapshot!')
     $http.get('/click').success(function (response) {
