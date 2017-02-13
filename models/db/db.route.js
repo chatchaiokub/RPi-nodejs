@@ -32,7 +32,7 @@
   })
 
   router.put('/api/:id', function (req, res) {
-    delete req.body._id
+   // delete req.body._id
     DataFidge.findOneAndUpdate(
       { _id: req.params.id },
       { $set: req.body },
