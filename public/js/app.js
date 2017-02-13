@@ -89,7 +89,11 @@ angular.module('dragApp', [])
     var now = new Date()
     var datePick = new Date(date)
     var SUM = Math.ceil((datePick - now) / (1000 * 3600 * 24))
-    return SUM
+    if (SUM <= 0) {
+      return ('X')
+    }else {
+      return SUM
+    }
   }
 
   // Freeze ///////////////////////////////////////////////////////////////////
