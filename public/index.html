@@ -49,7 +49,7 @@
           <button class="btn-floating waves-effect waves-light orange" ng-click="openDragCustom()"><b>+</b></button>
         </div>
         <div id="{{item.ArrDrag}}" ng-hide="flipStatus" ng-repeat="item in drag" ng-mouseup="positionDrag($index)">
-          <p class="btn-floating orange Child-drag" ng-click="openDragUpdate(item, $index)">{{countExpireDate(item.endDate)}}</p>
+          <p class="btn-floating Child-drag" ng-class="{'red': countExpireDate(item.endDate) === 'X', 'orange': countExpireDate(item.endDate) !== 'X'}" ng-click="openDragUpdate(item, $index)">{{countExpireDate(item.endDate)}}</p>
           {{init()}}
         </div>
       </div>
@@ -63,7 +63,7 @@
 
   <!-- List of Food & drink -->
   <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
-      <button class="drag-ball btn-floating waves-effect waves-light" style="background-color:#4b4242;">
+      <button class="drag-ball btn-floating waves-effect waves-light" style="background-color:#4b4242;" ng-class="{'red': countExpireDate(item.endDate) === 'X'}">
         <h1 class="drag-text flow-text amber-text text-darken-2">{{countExpireDate(item.endDate)}}</h1>
       </button>
       <span class="flow-text white-text">{{item.things}}</span>
