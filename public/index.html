@@ -49,7 +49,7 @@
           <button class="btn-floating waves-effect waves-light orange" ng-click="openDragCustom()"><b>+</b></button>
         </div>
         <div id="{{item.ArrDrag}}" ng-hide="flipStatus" ng-repeat="item in drag" ng-mouseup="positionDrag($index)">
-          <p class="btn-floating Child-drag" ng-class="{'red': countExpireDate(item.endDate) === 'X', 'orange': countExpireDate(item.endDate) !== 'X'}" ng-click="openDragUpdate(item, $index)">{{countExpireDate(item.endDate)}}</p>
+          <p class="btn-floating Child-drag" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}" ng-click="openDragUpdate(item, $index)">{{countExpireDate(item.endDate)}}</p>
           {{init()}}
         </div>
       </div>
@@ -63,19 +63,19 @@
 
   <!-- List of Food & drink -->
   <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
-      <button class="drag-ball btn-floating waves-effect waves-light" style="background-color:#4b4242;" ng-class="{'red': countExpireDate(item.endDate) === 'X'}">
-        <h1 class="drag-text flow-text amber-text text-darken-2">{{countExpireDate(item.endDate)}}</h1>
+      <button class="drag-ball btn-floating waves-effect waves-light" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}">
+        <h1 class="drag-text flow-text white-text text-white">{{countExpireDate(item.endDate)}}</h1>
       </button>
       <span class="flow-text white-text">{{item.things}}</span>
   </div>
 
   <!-- List of Freezer -->
-  <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in freezer" ng-click="openFreezerUpdate(item, $index)">
+  <!-- <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in freezer" ng-click="openFreezerUpdate(item, $index)">
       <span class="flow-text white-text">{{item.things}}</span>
-  </div>
+  </div> -->
 
   <!-- Button Snap! -->
-  <div class="fixed-action-btn horizontal click-to-toggle" style="bottom:5px; right:5px;">
+  <!-- <div class="fixed-action-btn horizontal click-to-toggle" style="bottom:5px; right:5px;">
       <a class="btn-floating btn-large waves-effect waves-light amber darken-3">
         <div class="icon-bars" data-icon="B"></div>
       </a>
@@ -96,7 +96,7 @@
           </a>
         </li>
       </ul>
-    </div>
+    </div> -->
 
   <!-- Modal Structure -->
   <div id="openDragCustom" class="modal" style="height:900px">
@@ -145,7 +145,7 @@
     </div>
   </div>
 
-  <div id="openFreezer" class="modal" style="height:900px">
+  <!-- <div id="openFreezer" class="modal" style="height:900px">
     <div class="modal-content">
       <h5 class="flow-text">Freezer</h5>
       <input type="text" ng-model="TFREEZER" placeholder="Food name">
@@ -164,15 +164,14 @@
       </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div id="openFreezerUpdate" class="modal">
+  <!-- <div id="openFreezerUpdate" class="modal">
     <div class="modal-content">
       <h5 class="flow-text">What is this?</h5>
       <input type="text" ng-model="updateTFREEZER" placeholder="Enter food name here">
       <h5 class="flow-text">Set a reminder (From today)<i class="icon-calendar" data-icon="a"></i></h5>
       <input type="date" class="datepicker" ng-model="updateDFREEZER" placeholder="Set date reminder">
-      <!-- <i class="icon-calendar" data-icon="a"></i> -->
     </div>
     <div class="modal-footer">
       <div class="container">
@@ -189,7 +188,7 @@
       </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Script Modal -->
   <script>
