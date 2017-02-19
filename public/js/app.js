@@ -152,6 +152,16 @@ angular.module('dragApp', [])
       console.log(res.data)
     })
   }
+  $scope.countExpireFreezer = function (date) {
+    var now = new Date()
+    var datePick = new Date(date)
+    var SUM = Math.ceil((datePick - now) / (1000 * 3600 * 24))
+    if (SUM <= 0) {
+      return (0)
+    }else {
+      return SUM
+    }
+  }
 
   // FrontEnd Control RaspberryPi /////////////////////////////////////////////
   $scope.click = function () {

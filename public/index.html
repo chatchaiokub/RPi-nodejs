@@ -13,6 +13,7 @@
   <link href="./css/css.css" rel="stylesheet" type="text/css">
   <link href="./css/materialize.css" rel="stylesheet" type="text/css" media="screen,projection" />
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://file.myfontastic.com/jrtWNCcVaoD4PJ5FgaXzjd/icons.css" rel="stylesheet">
 </head>
 <!-- Use AngularJS -->
 <body ng-app="dragApp" ng-controller="dragCtrl" ng-init="init()">
@@ -61,17 +62,30 @@
   <img ng-hide="flipStatus" class="responsive-img" src="Front2.jpg" style="width:500px;">
   <img ng-hide="!flipStatus" width="100%" height="300px;" src="Back.jpg">
 
-  <!-- List of Food & drink -->
-  <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
+  <!-- ListFood & ListFreezer -->
+  <div class="col s12">
+    <ul class="tabs black">
+      <li class="tab col s12"><a class="amber-text text-darken-3"href="#test1">List Food</a></li>
+      <li class="tab col s12"><a class="amber-text text-darken-3" href="#test2">Freezer</a></li>
+    </ul>
+  </div>
+  <!-- Food & drink -->
+  <div id="test1" class="col s12">
+    <div class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
+        <button class="drag-ball btn-floating waves-effect waves-light" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}">
+          <h1 class="drag-text flow-text white-text text-white">{{countExpireDate(item.endDate)}}</h1>
+        </button>
+        <span class="flow-text white-text">{{item.things}}</span>
+    </div>
+  </div>
+  <!-- Freezer -->
+  <div id="test2" class="col s12">
+    <div class="drag-list" ng-repeat="item in freezer" ng-click="openFreezerUpdate(item, $index)">
       <button class="drag-ball btn-floating waves-effect waves-light" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}">
-        <h1 class="drag-text flow-text white-text text-white">{{countExpireDate(item.endDate)}}</h1>
+        <h1 class="drag-text flow-text white-text text-white">{{countExpireFreezer(item.endDate)}}</h1>
       </button>
       <span class="flow-text white-text">{{item.things}}</span>
-  </div>
-
-  <!-- List of Freezer -->
-  <div ng-hide="flipStatus" class="drag-list" ng-repeat="item in freezer" ng-click="openFreezerUpdate(item, $index)">
-      <span class="flow-text white-text">{{item.things}}</span>
+    </div>
   </div>
 
   <!-- Button Snap! -->
@@ -81,17 +95,17 @@
       </a>
       <ul>
         <li>
-          <a class="btn-floating black" ng-click="openFreezer()">
-            <div class="icon-bars" data-icon="B"></div>
+          <a class="btn-floating amber darken-3" ng-click="openFreezer()">
+            <div class="icon-r2" data-icon="e"></div>
           </a>
         </li>
         <li>
-          <a class="btn-floating black" ng-click="flip()">
+          <a class="btn-floating amber darken-3" ng-click="flip()">
             <div class="icon-flip" data-icon="F"></div>
           </a>
         </li>
         <li>
-          <a class="btn-floating black" ng-click="click()" onclick="Materialize.toast('Snap Shot!', 5000,'rounded')">
+          <a class="btn-floating amber darken-3" ng-click="click()" onclick="Materialize.toast('Snap Shot!', 5000,'rounded')">
             <div class="icon-camera" data-icon="C"></div>
           </a>
         </li>
@@ -103,7 +117,7 @@
     <div class="modal-content">
       <h5 class="flow-text">What is this?</h5>
       <input type="text" ng-model="THING" placeholder="Food name">
-      <h5 class="flow-text">Set a reminder (From today)</h5>
+      <h5 class="flow-text">Set a reminder (From today)<i class="icon-calendar" data-icon="a"></i></h5>
       <input type="date" class="datepicker" ng-model="DAY" placeholder="Set date reminder">
     </div>
     <div class="modal-footer">
@@ -149,7 +163,7 @@
     <div class="modal-content">
       <h5 class="flow-text">Freezer</h5>
       <input type="text" ng-model="TFREEZER" placeholder="Food name">
-      <h5 class="flow-text">Set a reminder (From today)</h5>
+      <h5 class="flow-text">Set a reminder (From today)<i class="icon-calendar" data-icon="a"></i></h5>
       <input type="date" class="datepicker" ng-model="DFREEZER" placeholder="Set date reminder">
     </div>
     <div class="modal-footer">
@@ -194,12 +208,13 @@
   <script>
     $(document).ready(function() {
       $('.modal-trigger').leanModal();
+      $('ul.tabs').tabs();
     });
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15, // Creates a dropdown of 15 years to control year
       min: new Date()
-    })
+    });
   </script>
 
 </body>

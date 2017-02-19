@@ -65,22 +65,52 @@ body{
 .icon-calendar:before {
   content: "\61";
 }
+.icon-r1:before {
+  content: "\72";
+}
+.icon-r2:before {
+  content: "\65";
+}
+.icon-r3:before {
+  content: "\66";
+}
 
 .icon-camera {
   font-size: 20px;
   margin-right:9px;
   margin-top:3px;
+  color: black;
 }
 .icon-flip {
   font-size: 22px;
   margin-right:7px;
   margin-top:4px;
+  color: black;
 }
 .icon-bars {
   font-size: 22px;
   margin-top:4px;
+  color: black;
 }
 .icon-calendar {
   font-size: 22px;
   margin-left: 5px;
+}
+.icon-r1 {
+  font-size: 30px;
+  margin-right:3px;
+  margin-top:3px;
+  color: black;
+}
+.icon-r2 {
+  font-size: 30px;
+  margin-right:3.5px;
+  margin-top:3.5px;
+  color: black;
+}
+.icon-r3 {
+  font-size: 30px;
+  margin-right:3px;
+  margin-top:3px;
+  color: #ff8f00;
 }

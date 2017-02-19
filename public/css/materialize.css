@@ -5068,7 +5068,8 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #f6b2b5;
+  background-color:orange;
+   /*#f6b2b5;*/
   will-change: left, right;
 }
 
