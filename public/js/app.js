@@ -120,6 +120,12 @@ angular.module('dragApp', [])
     }).error(function (data, status, headers, config) {
       console.log('error')
     })
+    $http.post('/img/path', dataFreezerForPush).then((res) => {
+      console.log(res)
+    })
+    setTimeout(() => {
+      getPath()
+    }, 2000)
   }
   $scope.openFreezerUpdate = function (item, index) {
     $('#openFreezerUpdate').openModal()
@@ -185,5 +191,32 @@ angular.module('dragApp', [])
       $scope.flipStatus = false
       console.log($scope.flipStatus)
     }
+  }
+  $scope.tabList = true
+  $scope.tabFreezer = false
+  $scope.tabDrink = false
+  $scope.Tab = function (C) {
+    if (C === 'L') {
+      $scope.tabList = true
+      $scope.tabFreezer = false
+      $scope.tabDrink = false
+    }else if (C === 'F') {
+      $scope.tabList = false
+      $scope.tabFreezer = true
+      $scope.tabDrink = false
+    }else if (C === 'D') {
+      $scope.tabList = false
+      $scope.tabFreezer = false
+      $scope.tabDrink = true
+    }
+  }
+  // // api /img/path ////
+  $scope.getPath = []
+  getPath()
+  function getPath () {
+    $http.get('/img/path').then((res) => {
+      $scope.getPath = res.data
+      console.log(res.data)
+    })
   }
 })

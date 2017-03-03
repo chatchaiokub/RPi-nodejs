@@ -4065,6 +4065,11 @@ input[type=range] + .thumb {
   }
 }
 /*--------------------------------------------- More Device ---------------------------------------------------------*/
+/*@media only screen and (max-width: 992px) {
+  .modal {
+    width: 95%;
+  }
+}*/
 @media only screen and (min-width: 319px) {     /* Toast Alert for iPhone5 Only */
   .toast {
     float: left;
@@ -4128,6 +4133,9 @@ input[type=range] + .thumb {
   }
 }
 @media only screen and (min-width: 415px) {     /*------------------- iPhone 6 Plus,6s Plus (414px) -----------------*/
+  .modal {
+    height: 95%;
+  }
   .row .col.s1 {
     width: 9.3%;
     margin-left: auto;
@@ -5508,7 +5516,7 @@ button.btn-floating {
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  max-height: 70%;
+  max-height: 80%;
   width: 55%;
   margin: auto;
   overflow-y: auto;
