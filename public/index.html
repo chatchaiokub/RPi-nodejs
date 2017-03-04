@@ -93,14 +93,8 @@
         <h1 class="drag-text flow-text white-text text-white">{{countExpireFreezer(item.endDate)}}</h1>
       </button>
       <span class="flow-text white-text">{{item.things}}</span>
+      <img ng-src="{{item.pathImg}}" />
     </div>
-    <!-- test /img/path -->
-    <img src="./uploads/111.jpeg"/> <br>
-    <div ng-repeat="show in getPath">
-      <h3 style="color: white;">{{ show.things }} </h3><br>
-      <img ng-src="{{show.pathImg}}" />
-    </div>
-  </div>
 
   <!-- Button Snap! -->
   <div class="fixed-action-btn horizontal click-to-toggle" style="bottom:5px; right:5px;">

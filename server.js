@@ -3,7 +3,6 @@ var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 var snap = require('./models/snap/snap.route.js')
 var db = require('./models/db/db.route.js')
-var freeze = require('./models/freeze/freeze.route.js')
 var multer = require('multer')
 var app = express()
 
@@ -14,7 +13,6 @@ app.use(bodyParser.json())
 app.use(express.static('public'))
 app.use('/', snap)
 app.use('/', db)
-app.use('/', freeze)
 
 var storage = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -53,21 +51,21 @@ app.post('/api/photo', function (req, res) {
   })
 })
 
-// //////////////////////////////////////////////
 var strPathImg = ''
 var Schema = mongoose.Schema
-var imgPath = new Schema({}, { strict: false })
-var SchemaPath = mongoose.model('imgPath', imgPath)
-app.get('/img/path', function (req, res) {
-  SchemaPath.find({}).exec((err, done) => {
+var thingSchema = new Schema({}, { strict: false })
+var DataFreeze = mongoose.model('freezer', thingSchema)
+
+app.get('/freezer', function (req, res) {
+  DataFreeze.find({})
+  .exec(function (err, done) {
     if (err) console.log(err)
-    if (done) res.send(done)
+    res.send(done)
   })
 })
 
-app.post('/img/path', function (req, res) {
-  console.log(req.body)
-  let setData = {
+app.post('/freezer', function (req, res) {
+  let SetData = {
     things: req.body.things,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
@@ -75,13 +73,40 @@ app.post('/img/path', function (req, res) {
     days: req.body.days,
     ArrDrag: req.body.ArrDrag
   }
-  var obj = new SchemaPath(setData)
-  obj.save((err, done) => {
+  var Obj = new DataFreeze(SetData)
+  Obj.save(function (err, data, affected) {
     if (err) console.log(err)
-    if (done) console.log('success')
+    else res.send(data)
   })
   strPathImg = ''
-  res.send('success')
+})
+
+app.get('/freezer/:id', function (req, res) {
+  DataFreeze.findOne({ _id: req.params.id })
+  .exec(function (err, done) {
+    if (err) console.log(err)
+    res.send(done)
+  })
+})
+
+app.put('/freezer/:id', function (req, res) {
+  delete req.body._id
+  DataFreeze.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: req.body },
+    { new: true })
+    .exec(function (err, done) {
+      if (err) console.log(err)
+      res.send(done)
+    })
+})
+
+app.delete('/freezer/:id', function (req, res) {
+  DataFreeze.findOneAndRemove({ _id: req.params.id })
+  .exec(function (err, done) {
+    if (err) console.log(err)
+    res.send(done)
+  })
 })
 
 app.listen(3000)

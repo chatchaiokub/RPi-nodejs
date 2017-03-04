@@ -96,7 +96,7 @@ angular.module('dragApp', [])
     }
   }
 
-  // Freeze ///////////////////////////////////////////////////////////////////
+  // ////////////////////////// FREEZER ////////////////////////////////////////
   $scope.getDataFreezer = function () {
     $http.get('/freezer').success(function (response) {
       $scope.freezer = response
@@ -112,7 +112,7 @@ angular.module('dragApp', [])
     var datePick = new Date(DFREEZER)
     var SUM = Math.ceil((datePick - now) / (1000 * 3600 * 24))
     var endDate = new Date(+new Date() + (SUM * 24 * 60 * 60 * 1000))
-    var dataFreezerForPush = {things: TFREEZER, startDate: new Date(), endDate: endDate, days: SUM, ArrDrag: ArrDrag}
+    var dataFreezerForPush = {things: TFREEZER, startDate: new Date(), endDate: endDate, pathImg: '', days: SUM, ArrDrag: ArrDrag}
     $http.post('/freezer', dataFreezerForPush).success(function (response) {
       $scope.freezer.push(response)
       $scope.TFREEZER = ''
@@ -120,11 +120,8 @@ angular.module('dragApp', [])
     }).error(function (data, status, headers, config) {
       console.log('error')
     })
-    $http.post('/img/path', dataFreezerForPush).then((res) => {
-      console.log(res)
-    })
     setTimeout(() => {
-      getPath()
+      $scope.getDataFreezer()
     }, 2000)
   }
   $scope.openFreezerUpdate = function (item, index) {
@@ -169,7 +166,7 @@ angular.module('dragApp', [])
     }
   }
 
-  // FrontEnd Control RaspberryPi /////////////////////////////////////////////
+  // FrontEnd Control RaspberryPi ////////////////////
   $scope.click = function () {
     console.log('Snapshot!')
     $http.get('/click').success(function (response) {
@@ -182,6 +179,8 @@ angular.module('dragApp', [])
       console.log('error')
     })
   }
+
+  // Flip FrontCamera/BackCamera /////////////////////
   $scope.flipStatus = false
   $scope.flip = function () {
     if ($scope.flipStatus === false) {
@@ -192,6 +191,8 @@ angular.module('dragApp', [])
       console.log($scope.flipStatus)
     }
   }
+
+  // Routing tabList tabFreezer tabDrink ////////////
   $scope.tabList = true
   $scope.tabFreezer = false
   $scope.tabDrink = false
@@ -209,14 +210,5 @@ angular.module('dragApp', [])
       $scope.tabFreezer = false
       $scope.tabDrink = true
     }
-  }
-  // // api /img/path ////
-  $scope.getPath = []
-  getPath()
-  function getPath () {
-    $http.get('/img/path').then((res) => {
-      $scope.getPath = res.data
-      console.log(res.data)
-    })
   }
 })
