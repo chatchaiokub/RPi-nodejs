@@ -22,18 +22,24 @@ var storage = multer.diskStorage({
     console.log(file)
     switch (file.mimetype) {
       case 'image/jpeg':
-        let time = Date.now()
-        callback(null, time + '.jpeg')
-        strPathImg = './uploads/' + time + '.jpeg'
+        let tjpeg = Date.now()
+        callback(null, tjpeg + '.jpeg')
+        strPathImg = './uploads/' + tjpeg + '.jpeg'
         break
       case 'image/png':
-        callback(null, Date.now() + '.png')
+        let tpng = Date.now()
+        callback(null, tpng + '.png')
+        strPathImg = './uploads/' + tpng + '.png'
         break
       case 'image/jpg':
-        callback(null, Date.now() + '.jpg')
+        let tjpg = Date.now()
+        callback(null, tjpg + '.jpg')
+        strPathImg = './uploads/' + tjpg + '.jpg'
         break
       case 'image/gif':
-        callback(null, Date.now() + '.gif')
+        let tgif = Date.now()
+        callback(null, tgif + '.gif')
+        strPathImg = './uploads/' + tgif + '.gif'
         break
     }
   }
