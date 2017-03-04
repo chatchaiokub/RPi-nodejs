@@ -120,9 +120,6 @@ angular.module('dragApp', [])
     }).error(function (data, status, headers, config) {
       console.log('error')
     })
-    setTimeout(() => {
-      $scope.getDataFreezer()
-    }, 2000)
   }
   $scope.openFreezerUpdate = function (item, index) {
     $('#openFreezerUpdate').openModal()

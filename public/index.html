@@ -27,28 +27,28 @@
       </div>
       <div class="row FONTs1">
         <div class="center-align col s1 m1 l1">
-          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(1)">1Day</button>
+          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(1)">1Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(2)">2Day</button>
+          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(2)">2Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(3)">3Day</button>
+          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(3)">3Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(4)">4Day</button>
+          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(4)">4Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(5)">5Day</button>
+          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(5)">5Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(6)">6Day</button>
+          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(6)">6Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(7)">7Day</button>
+          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(7)">7Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button class="btn-floating waves-effect waves-light orange" ng-click="openDragCustom()"><b>+</b></button>
+          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="openDragCustom()"><b>+</b></button>
         </div>
         <div id="{{item.ArrDrag}}" ng-if="tabList" ng-hide="flipStatus" ng-repeat="item in drag" ng-mouseup="positionDrag($index)">
           <p class="btn-floating Child-drag" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}" ng-click="openDragUpdate(item, $index)">{{countExpireDate(item.endDate)}}</p>
@@ -63,7 +63,7 @@
   <img ng-hide="flipStatus" ng-if="tabList" class="responsive-img" src="Front2.jpg" style="width:500px;">
   <img ng-hide="!flipStatus" ng-if="tabList" width="100%" height="300px;" src="Back.jpg">
 
-  <div ng-show="tabFreezer" style="padding-top:100px;padding-bottom:100px;">
+  <div ng-if="tabFreezer" style="padding-top:100px;padding-bottom:100px;">
     <center>
       <a class="btn-large grey darken-4" ng-click="openFreezer()"><i class="material-icons right">subtitles</i>Add Data Freezer</a>
     </center>
@@ -78,8 +78,8 @@
     </ul>
   </div>
   <!-- Food & drink -->
-  <div id="test1" class="col s12">
-    <div class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
+  <div class="col s12">
+    <div ng-if="tabList" class="drag-list" ng-repeat="item in drag" ng-click="openDragUpdate(item, $index)">
         <button class="drag-ball btn-floating waves-effect waves-light" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}">
           <h1 class="drag-text flow-text white-text text-white">{{countExpireDate(item.endDate)}}</h1>
         </button>
@@ -87,8 +87,8 @@
     </div>
   </div>
   <!-- Freezer -->
-  <div id="test2" class="col s12">
-    <div class="drag-list" ng-repeat="item in freezer" ng-click="openFreezerUpdate(item, $index)">
+  <div class="col s12">
+    <div ng-if="tabFreezer" class="drag-list" ng-repeat="item in freezer" ng-click="openFreezerUpdate(item, $index)">
       <button class="drag-ball btn-floating waves-effect waves-light" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}">
         <h1 class="drag-text flow-text white-text text-white">{{countExpireFreezer(item.endDate)}}</h1>
       </button>
