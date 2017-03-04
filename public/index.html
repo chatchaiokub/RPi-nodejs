@@ -27,28 +27,28 @@
       </div>
       <div class="row FONTs1">
         <div class="center-align col s1 m1 l1">
-          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(1)">1Day</button>
+          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(1)">1Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(2)">2Day</button>
+          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(2)">2Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(3)">3Day</button>
+          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(3)">3Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(4)">4Day</button>
+          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(4)">4Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(5)">5Day</button>
+          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(5)">5Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(6)">6Day</button>
+          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(6)">6Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="addDrag(7)">7Day</button>
+          <button class="btn-floating waves-effect waves-light orange" ng-click="addDrag(7)">7Day</button>
         </div>
         <div style="margin-left:11px;" class="center-align col s1 m1 l1">
-          <button ng-disabled="tabFreezer||tabDrink" class="btn-floating waves-effect waves-light orange" ng-click="openDragCustom()"><b>+</b></button>
+          <button class="btn-floating waves-effect waves-light orange" ng-click="openDragCustom()"><b>+</b></button>
         </div>
         <div id="{{item.ArrDrag}}" ng-if="tabList" ng-hide="flipStatus" ng-repeat="item in drag" ng-mouseup="positionDrag($index)">
           <p class="btn-floating Child-drag" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}" ng-click="openDragUpdate(item, $index)">{{countExpireDate(item.endDate)}}</p>
@@ -63,7 +63,7 @@
   <img ng-hide="flipStatus" ng-if="tabList" class="responsive-img" src="Front2.jpg" style="width:500px;">
   <img ng-hide="!flipStatus" ng-if="tabList" width="100%" height="300px;" src="Back.jpg">
 
-  <div ng-if="tabFreezer" style="padding-top:100px;padding-bottom:100px;">
+  <div ng-if="tabFreezer" style="padding-top:159px;padding-bottom:159px;">
     <center>
       <a class="btn-large grey darken-4" ng-click="openFreezer()"><i class="material-icons right">subtitles</i>Add Data Freezer</a>
     </center>
@@ -72,7 +72,7 @@
   <!-- ListFood & ListFreezer -->
   <div class="col s12">
     <ul class="tabs black">
-      <li class="tab col s12"><a class="amber-text text-darken-3"href="#test1" ng-click="Tab('L')">List Food</a></li>
+      <li class="tab col s12"><a class="amber-text text-darken-3" href="#test1" ng-click="Tab('L')">List Food</a></li>
       <li class="tab col s12"><a class="amber-text text-darken-3" href="#test2" ng-click="Tab('F')">Freezer</a></li>
       <li class="tab col s12"><a class="amber-text text-darken-3" href="#test3" ng-click="Tab('D')">Drink</a></li>
     </ul>
@@ -83,7 +83,8 @@
         <button class="drag-ball btn-floating waves-effect waves-light" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}">
           <h1 class="drag-text flow-text white-text text-white">{{countExpireDate(item.endDate)}}</h1>
         </button>
-        <span class="flow-text white-text">{{item.things}}</span>
+        <span style="padding-left:5px;" class="flow-text white-text">{{item.things}}</span>
+        <span style="padding-left:5px;" class="flow-text grey-text darken-3">Registered</span>
     </div>
   </div>
   <!-- Freezer -->
@@ -92,8 +93,9 @@
       <button class="drag-ball btn-floating waves-effect waves-light" ng-class="{'red accent-4': countExpireDate(item.endDate) === 0, 'orange darken-1': countExpireDate(item.endDate) !== 0}">
         <h1 class="drag-text flow-text white-text text-white">{{countExpireFreezer(item.endDate)}}</h1>
       </button>
-      <span class="flow-text white-text">{{item.things}}</span>
-      <img ng-src="{{item.pathImg}}" />
+      <span style="padding-left:5px;" class="flow-text white-text">{{item.things}}</span>
+      <span style="padding-left:5px;" class="flow-text grey-text darken-3">Registered</span>
+      <!-- <img style="width:20px; height:20px;" ng-src="{{item.pathImg}}" /> -->
     </div>
 
   <!-- Button Snap! -->
@@ -102,11 +104,6 @@
         <div class="icon-bars" data-icon="B"></div>
       </a>
       <ul>
-        <!-- <li>
-          <a class="btn-floating amber darken-3" ng-click="openFreezer()">
-            <div class="icon-r2" data-icon="e"></div>
-          </a>
-        </li> -->
         <li>
           <a class="btn-floating amber darken-3" ng-click="flip()">
             <div class="icon-flip" data-icon="F"></div>
@@ -176,7 +173,7 @@
       <form id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
         <div class="file-field input-field">
             <div class="col s7">
-              <div class="btn grey darken-4">IMG
+              <div class="btn grey darken-4">browse
                 <i class="material-icons large right">panorama</i>
                 <input type="file" name="userPhoto" />
               </div>
@@ -212,9 +209,31 @@
   <div id="openFreezerUpdate" class="modal">
     <div class="modal-content">
       <h5 class="flow-text">What is this?</h5>
+      <img style="width:80px; height:80px;"ng-src="{{updatePFREEZER}}" />
       <input type="text" ng-model="updateTFREEZER" placeholder="Enter food name here">
       <h5 class="flow-text">Set a reminder (From today)<i class="icon-calendar" data-icon="a"></i></h5>
       <input type="date" class="datepicker" ng-model="updateDFREEZER" placeholder="Set date reminder">
+      <form id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
+        <div class="file-field input-field">
+            <div class="col s7">
+              <div class="btn grey darken-4">browse
+                <i class="material-icons large right">panorama</i>
+                <input type="file" name="userPhoto" />
+              </div>
+            </div>
+            <div class="col s5">
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+        </div>
+            <div class="col s12">
+              <button class="btn grey darken-4" style="margin-left: 30px;" type="submit" name="submit">Upload Image
+                <i class="material-icons small right">backup</i>
+              </button>
+              <span id="status"></span>
+            </div>
+      </form>
     </div>
     <div class="modal-footer">
       <div class="container">

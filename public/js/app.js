@@ -126,6 +126,7 @@ angular.module('dragApp', [])
     $scope.index = index
     $scope.updateTFREEZER = item.things
     $scope.updateDFREEZER = item.days
+    $scope.updatePFREEZER = item.pathImg
   }
   $scope.updateFreezer = function (updateTFREEZER, updateDFREEZER) {
     if ($scope.freezer[$scope.index].things === updateTFREEZER) {
